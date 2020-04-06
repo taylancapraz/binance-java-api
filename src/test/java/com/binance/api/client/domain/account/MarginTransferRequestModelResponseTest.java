@@ -14,7 +14,7 @@ import static org.junit.Assert.assertThat;
 /**
  * @see NewOrderResponse
  */
-public class NewOrderResponseTest {
+public class MarginTransferRequestModelResponseTest {
 
   private NewOrderResponse newOrderResponse;
   private Trade trade;
