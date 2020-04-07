@@ -13,119 +13,130 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SymbolInfo {
 
-  private String symbol;
+    private String symbol;
 
-  private SymbolStatus status;
+    private SymbolStatus status;
 
-  private String baseAsset;
+    private String baseAsset;
 
-  private Integer baseAssetPrecision;
+    private Integer baseAssetPrecision;
 
-  private String quoteAsset;
+    private String quoteAsset;
 
-  private Integer quotePrecision;
+    private Integer quotePrecision;
 
-  private List<OrderType> orderTypes;
+    private List<OrderType> orderTypes;
 
-  private boolean icebergAllowed;
+    private boolean icebergAllowed;
 
-  private List<SymbolFilter> filters;
+    private boolean isMarginTradingAllowed;
 
-  public String getSymbol() {
-    return symbol;
-  }
+    private List<SymbolFilter> filters;
 
-  public void setSymbol(String symbol) {
-    this.symbol = symbol;
-  }
+    public String getSymbol() {
+        return symbol;
+    }
 
-  public SymbolStatus getStatus() {
-    return status;
-  }
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
 
-  public void setStatus(SymbolStatus status) {
-    this.status = status;
-  }
+    public SymbolStatus getStatus() {
+        return status;
+    }
 
-  public String getBaseAsset() {
-    return baseAsset;
-  }
+    public void setStatus(SymbolStatus status) {
+        this.status = status;
+    }
 
-  public void setBaseAsset(String baseAsset) {
-    this.baseAsset = baseAsset;
-  }
+    public String getBaseAsset() {
+        return baseAsset;
+    }
 
-  public Integer getBaseAssetPrecision() {
-    return baseAssetPrecision;
-  }
+    public void setBaseAsset(String baseAsset) {
+        this.baseAsset = baseAsset;
+    }
 
-  public void setBaseAssetPrecision(Integer baseAssetPrecision) {
-    this.baseAssetPrecision = baseAssetPrecision;
-  }
+    public Integer getBaseAssetPrecision() {
+        return baseAssetPrecision;
+    }
 
-  public String getQuoteAsset() {
-    return quoteAsset;
-  }
+    public void setBaseAssetPrecision(Integer baseAssetPrecision) {
+        this.baseAssetPrecision = baseAssetPrecision;
+    }
 
-  public void setQuoteAsset(String quoteAsset) {
-    this.quoteAsset = quoteAsset;
-  }
+    public String getQuoteAsset() {
+        return quoteAsset;
+    }
 
-  public Integer getQuotePrecision() {
-    return quotePrecision;
-  }
+    public void setQuoteAsset(String quoteAsset) {
+        this.quoteAsset = quoteAsset;
+    }
 
-  public void setQuotePrecision(Integer quotePrecision) {
-    this.quotePrecision = quotePrecision;
-  }
+    public Integer getQuotePrecision() {
+        return quotePrecision;
+    }
 
-  public List<OrderType> getOrderTypes() {
-    return orderTypes;
-  }
+    public void setQuotePrecision(Integer quotePrecision) {
+        this.quotePrecision = quotePrecision;
+    }
 
-  public void setOrderTypes(List<OrderType> orderTypes) {
-    this.orderTypes = orderTypes;
-  }
+    public List<OrderType> getOrderTypes() {
+        return orderTypes;
+    }
 
-  public boolean isIcebergAllowed() {
-    return icebergAllowed;
-  }
+    public void setOrderTypes(List<OrderType> orderTypes) {
+        this.orderTypes = orderTypes;
+    }
 
-  public void setIcebergAllowed(boolean icebergAllowed) {
-    this.icebergAllowed = icebergAllowed;
-  }
+    public boolean isIcebergAllowed() {
+        return icebergAllowed;
+    }
 
-  public List<SymbolFilter> getFilters() {
-    return filters;
-  }
+    public void setIcebergAllowed(boolean icebergAllowed) {
+        this.icebergAllowed = icebergAllowed;
+    }
 
-  public void setFilters(List<SymbolFilter> filters) {
-    this.filters = filters;
-  }
+    public List<SymbolFilter> getFilters() {
+        return filters;
+    }
 
-  /**
-   * @param filterType filter type to filter for.
-   * @return symbol filter information for the provided filter type.
-   */
-  public SymbolFilter getSymbolFilter(FilterType filterType) {
-    return filters.stream()
-        .filter(symbolFilter -> symbolFilter.getFilterType() == filterType)
-        .findFirst()
-        .get();
-  }
+    public void setFilters(List<SymbolFilter> filters) {
+        this.filters = filters;
+    }
 
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
-        .append("symbol", symbol)
-        .append("status", status)
-        .append("baseAsset", baseAsset)
-        .append("baseAssetPrecision", baseAssetPrecision)
-        .append("quoteAsset", quoteAsset)
-        .append("quotePrecision", quotePrecision)
-        .append("orderTypes", orderTypes)
-        .append("icebergAllowed", icebergAllowed)
-        .append("filters", filters)
-        .toString();
-  }
+    public boolean isMarginTradingAllowed() {
+        return isMarginTradingAllowed;
+    }
+
+    public void setMarginTradingAllowed(boolean marginTradingAllowed) {
+        isMarginTradingAllowed = marginTradingAllowed;
+    }
+
+    /**
+     * @param filterType filter type to filter for.
+     * @return symbol filter information for the provided filter type.
+     */
+    public SymbolFilter getSymbolFilter(FilterType filterType) {
+        return filters.stream()
+                .filter(symbolFilter -> symbolFilter.getFilterType() == filterType)
+                .findFirst()
+                .get();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+                .append("symbol", symbol)
+                .append("status", status)
+                .append("baseAsset", baseAsset)
+                .append("baseAssetPrecision", baseAssetPrecision)
+                .append("quoteAsset", quoteAsset)
+                .append("quotePrecision", quotePrecision)
+                .append("orderTypes", orderTypes)
+                .append("icebergAllowed", icebergAllowed)
+                .append("MarginTradingAllowed", icebergAllowed)
+                .append("filters", filters)
+                .toString();
+    }
 }
