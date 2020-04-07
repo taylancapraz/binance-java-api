@@ -10,7 +10,9 @@ import com.binance.api.client.domain.event.ListenKey;
 import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.general.ServerTime;
+import com.binance.api.client.domain.margin.MarginAccount;
 import com.binance.api.client.domain.market.*;
+import org.omg.CORBA.Any;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -205,6 +207,14 @@ public interface BinanceApiService {
             @Query("orderId") Long orderId,
             @Query("origClientOrderId") String origClientOrderId,
             @Query("newClientOrderId") String newClientOrderId,
+            @Query("recvWindow") Long recvWindow,
+            @Query("timestamp") Long timestamp
+    );
+
+
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @GET("/sapi/v1/margin/account")
+    Call<MarginAccount> getMarginAccountDetail(
             @Query("recvWindow") Long recvWindow,
             @Query("timestamp") Long timestamp
     );

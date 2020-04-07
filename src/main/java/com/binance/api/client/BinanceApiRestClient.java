@@ -4,6 +4,7 @@ import com.binance.api.client.domain.account.*;
 import com.binance.api.client.domain.account.request.*;
 import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
+import com.binance.api.client.domain.margin.MarginAccount;
 import com.binance.api.client.domain.margin.MarginBorrowRequestModel;
 import com.binance.api.client.domain.margin.MarginTransferRequestModel;
 import com.binance.api.client.domain.market.*;
@@ -288,4 +289,8 @@ public interface BinanceApiRestClient {
     NewOrderResponse marginOrder(NewOrder order);
 
     CancelOrderResponse marginCancelOrder(CancelOrderRequest cancel);
+
+    MarginAccount getMarginAccount(Long recvWindow, Long timestamp);
+
+    MarginAccount getMarginAccount();
 }
