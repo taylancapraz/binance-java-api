@@ -135,7 +135,7 @@ public class SymbolInfo {
                 .append("quotePrecision", quotePrecision)
                 .append("orderTypes", orderTypes)
                 .append("icebergAllowed", icebergAllowed)
-                .append("MarginTradingAllowed", icebergAllowed)
+                .append("marginTradingAllowed", icebergAllowed)
                 .append("filters", filters)
                 .toString();
     }
