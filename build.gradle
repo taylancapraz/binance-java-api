@@ -64,6 +64,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-jackson:2.4.0'
     implementation 'commons-codec:commons-codec:1.10'
     implementation 'org.apache.commons:commons-lang3:3.6'
+    
+    // Lint
+    formattingOnly("com.pinterest:ktlint:${ktlintVersion}")
+    
     testImplementation 'junit:junit:4.12'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
 }

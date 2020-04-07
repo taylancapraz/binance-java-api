@@ -1,8 +1,8 @@
 package com.binance.api.client.domain.margin
 
 import com.binance.api.client.constant.BinanceApiConstants
-import org.apache.commons.lang3.builder.ToStringBuilder
 import java.math.BigDecimal
+import org.apache.commons.lang3.builder.ToStringBuilder
 
 data class MarginBorrowRequestModel(
     val asset: String,
