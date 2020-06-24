@@ -105,12 +105,12 @@ public class SymbolInfo {
         this.filters = filters;
     }
 
-    public boolean isMarginTradingAllowed() {
+    public boolean isIsMarginTradingAllowed() {
         return isMarginTradingAllowed;
     }
 
-    public void setMarginTradingAllowed(boolean marginTradingAllowed) {
-        isMarginTradingAllowed = marginTradingAllowed;
+    public void setIsMarginTradingAllowed(boolean marginTradingAllowed) {
+        this.isMarginTradingAllowed = marginTradingAllowed;
     }
 
     /**
@@ -135,7 +135,7 @@ public class SymbolInfo {
                 .append("quotePrecision", quotePrecision)
                 .append("orderTypes", orderTypes)
                 .append("icebergAllowed", icebergAllowed)
-                .append("marginTradingAllowed", icebergAllowed)
+                .append("isMarginTradingAllowed", isMarginTradingAllowed)
                 .append("filters", filters)
                 .toString();
     }

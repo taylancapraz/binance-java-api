@@ -32,7 +32,7 @@ public interface BinanceApiService {
     @GET("/api/v1/time")
     Call<ServerTime> getServerTime();
 
-    @GET("/api/v1/exchangeInfo")
+    @GET("/api/v3/exchangeInfo")
     Call<ExchangeInfo> getExchangeInfo();
 
     @GET
@@ -164,7 +164,7 @@ public interface BinanceApiService {
             @Query("timestamp") Long timestamp
     );
 
-    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_APIKEY_HEADER)
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
     @POST("/sapi/v1/margin/loan")
     Call<Void> marginLoan(
             @Query("asset") String asset,
@@ -173,7 +173,7 @@ public interface BinanceApiService {
             @Query("timestamp") Long timestamp
     );
 
-    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_APIKEY_HEADER)
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
     @POST("/sapi/v1/margin/repay")
     Call<Void> marginRepay(
             @Query("asset") String asset,
