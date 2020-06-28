@@ -291,6 +291,7 @@ public interface BinanceApiRestClient {
     CancelOrderResponse marginCancelOrder(CancelOrderRequest cancel);
 
     MarginAccount getMarginAccount(Long recvWindow, Long timestamp);
+    List<Trade> getMarginTrades(String symbol, Long limit, Long fromId);
 
     MarginAccount getMarginAccount();
 }

@@ -12,7 +12,6 @@ import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.general.ServerTime;
 import com.binance.api.client.domain.margin.MarginAccount;
 import com.binance.api.client.domain.market.*;
-import org.omg.CORBA.Any;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -215,6 +214,17 @@ public interface BinanceApiService {
     @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
     @GET("/sapi/v1/margin/account")
     Call<MarginAccount> getMarginAccountDetail(
+            @Query("recvWindow") Long recvWindow,
+            @Query("timestamp") Long timestamp
+    );
+
+
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @GET("/sapi/v1/margin/myTrades")
+    Call<List<Trade>> getMarginTrades(
+            @Query("symbol") String symbol,
+            @Query("limit") Long limit,
+            @Query("fromId") Long fromId,
             @Query("recvWindow") Long recvWindow,
             @Query("timestamp") Long timestamp
     );

@@ -266,6 +266,12 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
     }
 
     @Override
+    public List<Trade> getMarginTrades(String symbol, Long limit, Long fromId) {
+        return executeSync(binanceApiService.getMarginTrades(symbol, limit, fromId, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
+                                                             System.currentTimeMillis()));
+    }
+
+    @Override
     public MarginAccount getMarginAccount() {
         return getMarginAccount(BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis());
     }
