@@ -4,11 +4,13 @@ import com.binance.api.client.domain.account.*;
 import com.binance.api.client.domain.account.request.*;
 import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
+import com.binance.api.client.domain.margin.InterestListModel;
 import com.binance.api.client.domain.margin.MarginAccount;
 import com.binance.api.client.domain.margin.MarginBorrowRequestModel;
 import com.binance.api.client.domain.margin.MarginTransferRequestModel;
 import com.binance.api.client.domain.market.*;
 
+import java.time.Instant;
 import java.util.List;
 
 /**
@@ -292,6 +294,7 @@ public interface BinanceApiRestClient {
 
     MarginAccount getMarginAccount(Long recvWindow, Long timestamp);
     List<Trade> getMarginTrades(String symbol, Long limit, Long fromId);
+    InterestListModel getInterestList(Instant startTime, Long current, Long size);
 
     MarginAccount getMarginAccount();
 }

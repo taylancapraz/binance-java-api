@@ -10,6 +10,7 @@ import com.binance.api.client.domain.event.ListenKey;
 import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.general.ServerTime;
+import com.binance.api.client.domain.margin.InterestListModel;
 import com.binance.api.client.domain.margin.MarginAccount;
 import com.binance.api.client.domain.market.*;
 import retrofit2.Call;
@@ -225,6 +226,16 @@ public interface BinanceApiService {
             @Query("symbol") String symbol,
             @Query("limit") Long limit,
             @Query("fromId") Long fromId,
+            @Query("recvWindow") Long recvWindow,
+            @Query("timestamp") Long timestamp
+    );
+
+    @Headers(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+    @GET("/sapi/v1/margin/interestHistory")
+    Call<InterestListModel> getInterests(
+            @Query("startTime") Long startTime,
+            @Query("current") Long current,
+            @Query("size") Long size,
             @Query("recvWindow") Long recvWindow,
             @Query("timestamp") Long timestamp
     );

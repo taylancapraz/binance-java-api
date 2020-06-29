@@ -6,11 +6,13 @@ import com.binance.api.client.domain.account.*;
 import com.binance.api.client.domain.account.request.*;
 import com.binance.api.client.domain.general.Asset;
 import com.binance.api.client.domain.general.ExchangeInfo;
+import com.binance.api.client.domain.margin.InterestListModel;
 import com.binance.api.client.domain.margin.MarginAccount;
 import com.binance.api.client.domain.margin.MarginBorrowRequestModel;
 import com.binance.api.client.domain.margin.MarginTransferRequestModel;
 import com.binance.api.client.domain.market.*;
 
+import java.time.Instant;
 import java.util.List;
 
 import static com.binance.api.client.impl.BinanceApiServiceGenerator.createService;
@@ -269,6 +271,12 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
     public List<Trade> getMarginTrades(String symbol, Long limit, Long fromId) {
         return executeSync(binanceApiService.getMarginTrades(symbol, limit, fromId, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
                                                              System.currentTimeMillis()));
+    }
+
+    @Override
+    public InterestListModel getInterestList(Instant startTime, Long current, Long limit) {
+        return executeSync(binanceApiService.getInterests(startTime.getEpochSecond(), current, limit, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
+                                                          System.currentTimeMillis()));
     }
 
     @Override
