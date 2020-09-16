@@ -256,6 +256,16 @@ public class BinanceApiRestClientImpl implements BinanceApiRestClient {
     }
 
     @Override
+    public Order getMarginOrder(String symbol, String clientGeneratedId) {
+        return executeSync(binanceApiService.getMarginOrder(
+                symbol,
+                clientGeneratedId,
+                BinanceApiConstants.DEFAULT_RECEIVING_WINDOW,
+                System.currentTimeMillis()
+        ));
+    }
+
+    @Override
     public CancelOrderResponse marginCancelOrder(CancelOrderRequest cancelOrderRequest) {
         return executeSync(binanceApiService.marginCancelOrder(cancelOrderRequest.getSymbol(),
                                                                cancelOrderRequest.getOrderId(), cancelOrderRequest.getOrigClientOrderId(), cancelOrderRequest.getNewClientOrderId(),
